@@ -3,8 +3,10 @@ from discord import Intents, Client, Message
 from dotenv import load_dotenv
 # from responses import get_response
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+#load_dotenv()
+#TOKEN = os.getenv('DISCORD_TOKEN')
+
+TOKEN = os.environ['DISCORD_TOKEN']
 
 # need to set intents
 intents: Intents = Intents.all()
