@@ -1,3 +1,0 @@
-name: token
-  env:
-    DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
