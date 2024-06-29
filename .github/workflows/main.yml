@@ -7,4 +7,6 @@ env:
 jobs:
   run-code:
     runs-on: ubuntu-latest
-    run: python AM.py
+    steps:
+      - name: run
+        run: python AM.py
