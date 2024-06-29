@@ -1,0 +1,10 @@
+on:
+  workflow_dispatch:
+
+env:
+  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+
+jobs:
+  run-code:
+    runs-on: ubuntu-latest
+    run: python AM.py
