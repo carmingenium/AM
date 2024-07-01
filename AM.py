@@ -7,6 +7,7 @@ from discord.ext import commands
 #TOKEN = os.getenv('DISCORD_TOKEN')
 
 TOKEN = os.environ["DISCORD_TOKEN"]
+BOT = commands.Bot(command_prefix='!', intents=Intents.all())
 
 @bot.event
 async def on_ready():
@@ -19,6 +20,6 @@ def main():
   else:
     print("This is the token (secret): " + TOKEN)
   
-  bot = commands.Bot(command_prefix='!', intents=Intents.all())
-  bot.run(TOKEN)
+
+  BOT.run(TOKEN)
 main()
