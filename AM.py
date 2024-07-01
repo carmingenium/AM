@@ -8,6 +8,9 @@ from discord.ext import commands
 
 TOKEN = os.environ["DISCORD_TOKEN"]
 
+@bot.event
+async def on_ready():
+  print('Hello, I am ready!')
 
 def main():
   print("I RAN")
@@ -15,10 +18,7 @@ def main():
     print("The token is empty")
   else:
     print("This is the token (secret): " + TOKEN)
-
+  
+  bot = commands.Bot(command_prefix='!', intents=Intents.all())
+  bot.run(TOKEN)
 main()
-
-
-# @client.event
-# async def on_ready():
-#   print('Hello, I am ready!')
