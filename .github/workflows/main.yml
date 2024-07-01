@@ -10,7 +10,6 @@ jobs:
   run-code:
     runs-on: ubuntu-latest
     steps:
-      steps:
       - uses: actions/checkout@v4
       - name: Set up Python
         # This is the version of the action for setting up Python, not the Python version.
