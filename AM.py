@@ -3,10 +3,12 @@ import discord
 from discord import Intents, Client, Message
 from discord.ext import commands
 
-
+description = '''Description test'''
 
 TOKEN = os.environ["DISCORD_TOKEN"]
-BOT = commands.Bot(command_prefix='!', intents=Intents.all())
+intents1 = Intents.all()
+
+BOT = commands.Bot(command_prefix='!',description=description, intents=intents1)
 
 @BOT.event
 async def on_ready():
