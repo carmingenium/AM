@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
-        # This is the version of the action for setting up Python, not the Python version.
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -21,7 +20,8 @@ jobs:
       - name: Install dependencies
         run:
           python -m pip install --upgrade pip
-          pip install git+https://github.com/Rapptz/discord.py@async -U
+          pip install discord
+          # pip install git+https://github.com/Rapptz/discord.py@async -U
       - name: Run Python
         run: 
           python AM.py
