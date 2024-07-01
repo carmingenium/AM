@@ -1,8 +1,7 @@
 import os
-# from discord import Intents, Client, Message
-# from discord.ext import commands
-
 import discord
+from discord import Intents, Client, Message
+from discord.ext import commands
 
 #load_dotenv()
 #TOKEN = os.getenv('DISCORD_TOKEN')
