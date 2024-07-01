@@ -16,9 +16,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: run
-        run: 
-          python --version
+      - name: Version Check
+        run: python --version
+      - name: Install dependencies
+        run:
           python -m pip install --upgrade pip
           pip install git+https://github.com/Rapptz/discord.py@async -U
+      - name: Run Python
+        run: 
           python AM.py
