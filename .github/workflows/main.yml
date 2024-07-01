@@ -19,5 +19,5 @@ jobs:
       - name: run
         run: 
           pip install --upgrade pip
-          pip install discord
+          pip3 install git+https://github.com/Rapptz/discord.py@async -U
           python AM.py
