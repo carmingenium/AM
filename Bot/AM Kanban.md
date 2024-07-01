@@ -6,8 +6,7 @@ kanban-plugin: board
 
 ## Todo
 
-- [ ] 🛫 2024-06-30
-	Documentation
+- [ ] 🛫 2024-07-01⏫ Succesfully get secret from the github to activate the bot with any functionality for tests
 
 
 ## Done
