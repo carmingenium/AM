@@ -3,6 +3,8 @@ import discord
 from discord import Intents, Client, Message
 from discord.ext import commands
 
+# bot does connect but does not run on_ready command and gets stuck
+
 description = '''Description test'''
 
 TOKEN = os.environ["DISCORD_TOKEN"]
