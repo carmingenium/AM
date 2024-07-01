@@ -9,7 +9,12 @@ import discord
 TOKEN = os.environ["DISCORD_TOKEN"]
 
 
+def main():
+  print("I RAN")
 
-@client.event
-async def on_ready():
-  print('Hello, I am ready!')
+main()
+
+
+# @client.event
+# async def on_ready():
+#   print('Hello, I am ready!')
