@@ -15,7 +15,7 @@ jobs:
       - name: Setup
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.11'
       - name: run
         run: 
           pip install discord
