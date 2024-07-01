@@ -19,5 +19,5 @@ jobs:
           python-version: '3.12'
       - name: run
         run: 
-          pip install discord
+          pip -m install discord
           python AM.py
