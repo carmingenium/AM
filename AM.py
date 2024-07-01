@@ -12,7 +12,10 @@ TOKEN = os.environ["DISCORD_TOKEN"]
 
 def main():
   print("I RAN")
-  print("This is the token (secret): " + TOKEN)
+  if(TOKEN == None):
+    print("The token is empty")
+  else:
+    print("This is the token (secret): " + TOKEN)
 
 main()
 
