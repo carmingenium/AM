@@ -5,7 +5,7 @@ on:
 
 env:
   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-
+  TEST: ${{ secrets.TEST }}
 jobs:
   run-code:
     runs-on: ubuntu-latest
