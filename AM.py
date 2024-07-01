@@ -9,7 +9,7 @@ from discord.ext import commands
 TOKEN = os.environ["DISCORD_TOKEN"]
 BOT = commands.Bot(command_prefix='!', intents=Intents.all())
 
-@bot.event
+@BOT.event
 async def on_ready():
   print('Hello, I am ready!')
 
