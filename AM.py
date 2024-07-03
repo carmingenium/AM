@@ -22,7 +22,7 @@ def main():
   print("This is the token (secret): " + TOKEN)
   
 
-  BOT.run(TOKEN)
+  BOT.run(TOKEN) # this is where the bot gets stuck
   time.sleep(5)
   BOT.close()
 main()
