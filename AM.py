@@ -2,7 +2,6 @@ import os
 import discord
 from discord import Intents, Client, Message
 from discord.ext import commands
-import time
 
 # bot does connect but does not run on_ready command and gets stuck
 
@@ -23,6 +22,5 @@ def main():
   
 
   BOT.run(TOKEN) # this is where the bot gets stuck
-  time.sleep(5)
-  BOT.close()
+  # Bot does not run on_ready command when it runs
 main()

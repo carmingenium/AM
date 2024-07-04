@@ -15,6 +15,17 @@ collapse:close
 Could post related links in a certain channel when certain timestamps are reached(1 day, 2 hours, 1 hour etc.) 
 ```
 
+```ad-info
+title: Random selector for polls
+collapse:close
+For situations where poll has an equal result, select 1 between them.
+```
+```ad-info
+title: Ticket creator for event propositions
+collapse:close
+Enables anyone to create a ticket to event admins to host an event.
+```
+
 
 ````
 
@@ -23,16 +34,10 @@ Could post related links in a certain channel when certain timestamps are reache
 title:Tasks
 collapse:open
 
-```ad-todo
+```ad-done
 title: Documentation
 collapse:close
 It would be nice to create documentation for all tasks which explain every aspect of them. This would gives us clear goals and easier workflow over a long period of time.
-```
-
-```ad-todo
-title: Fill in Kanban
-collapse:close
-In the order of tasks.
 ```
 
 ````
