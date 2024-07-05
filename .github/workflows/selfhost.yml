@@ -6,7 +6,7 @@ env:
   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 jobs:
   run-code:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
