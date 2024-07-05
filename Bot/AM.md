@@ -3,6 +3,20 @@ title: AM
 collapse:open
 
 
+
+```ad-important
+title: EVENT SYSTEM
+collapse:close
+- Creates events (only available to certain roles)
+- Enables people to join the events (available to other certain roles)
+- Has its own links and data that is saved and can be reached by certain roles.
+- Countdown and link saver features will be in this system
+
+needs to be designed before starting
+```
+
+
+
 ```ad-info
 title: Link saver for weekly film event
 collapse:close
@@ -25,6 +39,12 @@ title: Ticket creator for event propositions
 collapse:close
 Enables anyone to create a ticket to event admins to host an event.
 ```
+```ad-info
+title: Role giver
+collapse:close
+Generic role getting feature. Makes it easier on the mod team to classify people on their interests.
+```
+
 
 
 ````
