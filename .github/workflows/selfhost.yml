@@ -21,6 +21,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install discord
           pip install pip-system-certs
+          pip install --upgrade certifi
       - name: Run Bot
         run: 
           python AM.py
