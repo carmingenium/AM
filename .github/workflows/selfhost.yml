@@ -23,6 +23,14 @@ jobs:
   fix-ssl:
     runs-on: self-hosted
     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run:
+          python -m pip install --upgrade pip
+          pip install discord
       - name: Run SSL code
         run:
           python ssl.py
@@ -30,6 +38,14 @@ jobs:
   run-code:
     runs-on: self-hosted
     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run:
+          python -m pip install --upgrade pip
+          pip install discord
       - name: Run Bot
         run: 
           python AM.py
