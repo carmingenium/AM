@@ -20,7 +20,7 @@ def main():
   print("I RAN")
   print("This is the token (secret): " + TOKEN)
   
-  ssl._create_default_https_context = ssl._create_unverified_context # needed for certification ?? (testing)
+  #ssl._create_default_https_context = ssl._create_unverified_context # needed for certification ?? (testing)
 
   BOT.run(TOKEN) # this is where the bot gets stuck
   # Bot does not run on_ready command when it runs
