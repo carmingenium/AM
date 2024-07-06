@@ -5,22 +5,7 @@ on:
 env:
   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 jobs:
-  setup:
-    runs-on: self-hosted
 
-          
-  fix-ssl:
-    runs-on: self-hosted
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      - name: Install dependencies
-      - name: Run SSL code
-        run:
-          python ssl.py
-      
   run-code:
     runs-on: self-hosted
     steps:
