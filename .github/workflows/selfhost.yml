@@ -7,6 +7,22 @@ env:
 jobs:
   setup:
     runs-on: self-hosted
+
+          
+  fix-ssl:
+    runs-on: self-hosted
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+      - name: Run SSL code
+        run:
+          python ssl.py
+      
+  run-code:
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -19,33 +35,7 @@ jobs:
         run:
           python -m pip install --upgrade pip
           pip install discord
-          
-  fix-ssl:
-    runs-on: self-hosted
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      - name: Install dependencies
-        run:
-          python -m pip install --upgrade pip
-          pip install discord
-      - name: Run SSL code
-        run:
-          python ssl.py
-      
-  run-code:
-    runs-on: self-hosted
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      - name: Install dependencies
-        run:
-          python -m pip install --upgrade pip
-          pip install discord
+          pip install –upgrade certifi
       - name: Run Bot
         run: 
           python AM.py
