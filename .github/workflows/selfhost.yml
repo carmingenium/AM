@@ -5,7 +5,7 @@ on:
 env:
   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 jobs:
-  run-code:
+  setup:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
@@ -13,13 +13,23 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-      
       - name: Version Check
         run: python --version
       - name: Install dependencies
         run:
           python -m pip install --upgrade pip
           pip install discord
-      - name: Run Python
+          
+  fix-ssl:
+    runs-on: self-hosted
+    steps:
+      - name: Run SSL code
+        run:
+          python ssl.py
+      
+  run-code:
+    runs-on: self-hosted
+    steps:
+      - name: Run Bot
         run: 
           python AM.py
