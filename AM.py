@@ -2,7 +2,6 @@ import os
 import discord
 from discord import Intents, Client, Message
 from discord.ext import commands
-import ssl # needed for certification ?? (testing)
 
 
 # setup
@@ -20,8 +19,6 @@ def main():
   print("I RAN")
   print("This is the token (secret): " + TOKEN)
   
-  #ssl._create_default_https_context = ssl._create_unverified_context # needed for certification ?? (testing)
 
-  BOT.run(TOKEN) # this is where the bot gets stuck
-  # Bot does not run on_ready command when it runs
+  BOT.run(TOKEN)
 main()
