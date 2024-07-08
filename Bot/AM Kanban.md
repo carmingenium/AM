@@ -6,7 +6,7 @@ kanban-plugin: board
 
 ## Todo
 
-- [ ] ⏳ 2024-07-22 Wait for Raspberry Pi to arrive and set the device up as a runner
+- [ ] ⏳ 2024-07-10 Wait for Raspberry Pi to arrive and set the device up as a runner
 
 
 ## Done
