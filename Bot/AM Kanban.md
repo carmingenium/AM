@@ -6,7 +6,9 @@ kanban-plugin: board
 
 ## Todo
 
-- [ ] ⏳ 2024-07-10 Wait for Raspberry Pi to arrive and set the device up as a runner
+- [ ] 🛫 2024-07-12 Setup OS for raspberry Pi
+- [ ] 🛫2024-07-13 Setup Runner for raspberry Pi
+- [ ] 🛫 2024-07-15 Run Code at least once
 
 
 ## Done
@@ -16,6 +18,7 @@ kanban-plugin: board
 - [ ] 🛫 📅 2024-06-24  Setup
 - [ ] 🛫 2024-07-04 get on_ready function to run
 - [ ] 🛫 2024-07-04 Self-host the bot ⏫
+- [ ] ⏳ 2024-07-10 Wait for Raspberry Pi to arrive
 
 
 
