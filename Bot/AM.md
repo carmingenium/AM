@@ -44,6 +44,12 @@ title: Role giver
 collapse:close
 Generic role getting feature. Makes it easier on the mod team to classify people on their interests.
 ```
+```ad-info
+title: Movie Recommender
+collapse:close
+Recommends movies depending on input list of movies or if empty, random movie
+- need to find a source for movies and a way to use that
+```
 
 
 
