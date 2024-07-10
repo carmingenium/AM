@@ -11,11 +11,16 @@
             "id": "3549b3200df1d819",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "AM.md",
-                "mode": "source",
-                "source": false
+                "file": "AM Kanban.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false
+                  ]
+                }
               }
             }
           }
@@ -85,7 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AM.md",
+                "file": "AM Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +107,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AM.md",
+                "file": "AM Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +130,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AM.md"
+                "file": "AM Kanban.md"
               }
             }
           }
@@ -151,8 +156,8 @@
   },
   "active": "3549b3200df1d819",
   "lastOpenFiles": [
-    "AM Kanban.md",
     "AM.md",
+    "AM Kanban.md",
     "Extra Features - Other Bots.md",
     "Welcome.md"
   ]

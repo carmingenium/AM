@@ -7,7 +7,7 @@ kanban-plugin: board
 ## Todo
 
 - [ ] 🛫 2024-07-12 Setup OS for raspberry Pi
-- [ ] 🛫2024-07-13 Setup Runner for raspberry Pi
+- [ ] 🛫2024-07-14 Setup Runner for raspberry Pi
 - [ ] 🛫 2024-07-15 Run Code at least once
 
 
