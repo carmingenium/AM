@@ -6,9 +6,10 @@ kanban-plugin: board
 
 ## Todo
 
-- [ ] 🛫 2024-07-16 Run Code at least once
-- [ ] 🛫 2024-07-15 Add another workflow or change the workflow in a way that runs on push.
-- [ ] 🛫 2024-07-15 Setup terminal code that runs on start on linux
+- [ ] 📅 2024-07-18 Extenders are arriving
+- [ ] 🛫 2024-07-20 Run Code at least once
+- [ ] 🛫 2024-07-20 Setup terminal code that runs on start on linux
+- [ ] 🛫 2024-07-20 Add another workflow or change the workflow in a way that runs on push.
 
 
 ## Done
