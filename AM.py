@@ -8,7 +8,7 @@ from discord.ext import commands
 description = '''Description test'''
 TOKEN = os.environ["DISCORD_TOKEN"]
 intents1 = Intents.all()
-BOT = commands.Bot(command_prefix='!',description=description, intents=intents1)
+bot = commands.Bot(command_prefix='!',description=description, intents=intents1)
 # setup end
 
 @bot.event
@@ -18,15 +18,17 @@ async def on_ready():
   dev_channel = bot.get_channel(DEV_CHANNEL)
   await dev_channel.send("BOT ACTIVE")
   
-@bot.event
-async def on_disconnect():
-  print("bot is disconnected")
+@bot.command(name='close')
+async def close_bot(ctx):
   dev_channel = bot.get_channel(DEV_CHANNEL)
   await dev_channel.send("BOT DISCONNECTED")
-
-@bot.command(name='test')
-async def test(ctx):
   await bot.close()
+
+# Handling on_disconnect() event (optional)
+@bot.event
+async def on_disconnect():
+  print("Bot is disconnected")  # This will print to console when disconnected
+  # You may choose to send a message here as well, but remember it won't trigger on bot.close()
 
 
 
