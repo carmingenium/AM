@@ -31,7 +31,7 @@ async def help(interaction: discord.Interaction):
 async def test(interaction: discord.Interaction):
   await interaction.response.send_message("test command")
 
-@bot.tree.command(name"shutdown", description="Shuts down the bot.")
+@bot.tree.command(name="shutdown", description="Shuts down the bot.")
 async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("Shutting down: " + str(bot.user))
   await bot.close()
