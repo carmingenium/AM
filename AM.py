@@ -1,14 +1,14 @@
-import os
-import discord
-from discord import Intents, Client, Message
+from discord
 from discord.ext import commands
 
 
 # setup
-description = '''Description test'''
+
 BOT_TOKEN = os.environ["DISCORD_TOKEN"]
+DEV_CHANNEL = 1253303598666747965 # make this settable for every server later on
 intents1 = Intents.all()
-bot = commands.Bot(command_prefix='!',description=description, intents=intents1)
+intents1.members = True
+bot = commands.Bot(command_prefix='!', intents=intents1)
 # setup end
 
 @bot.event
@@ -17,28 +17,28 @@ async def on_ready():
   print(f'{bot.user} has connected to Discord!')
   dev_channel = bot.get_channel(DEV_CHANNEL)
   await dev_channel.send("BOT ACTIVE")
-  
-@bot.command(name='close')
-async def close_bot(ctx):
-  dev_channel = bot.get_channel(DEV_CHANNEL)
-  await dev_channel.send("BOT DISCONNECTED")
+  synced = await bot.tree.sync()
+  print("synced" + str(len(synced)))
+
+@bot.tree.command(name="help",description="Shows all usable commands")
+async def help(interaction: discord.Interaction):
+  # learn about different displays
+  await interaction.response.send_message("Not implemented yet")
+  # retırms empty list
+  # await interaction.response.send_message("Here are all the commands: " + str(all_commands))
+
+@bot.tree.command(name="test", description="test command")
+async def test(interaction: discord.Interaction):
+  await interaction.response.send_message("test command")
+
+@bot.tree.command(name"shutdown", description="Shuts down the bot.")
+async def close_bot(interaction: discord.Interaction):
+  await interaction.response.send_message("Shutting down: " + str(bot.user))
   await bot.close()
 
-# Handling on_disconnect() event (optional)
 @bot.event
 async def on_disconnect():
-  print("Bot is disconnected")  # This will print to console when disconnected
-  # You may choose to send a message here as well, but remember it won't trigger on bot.close()
-
-
-
-
-
-
-
-
-
-
+  print("Bot is disconnected")
 
 
 def main():
