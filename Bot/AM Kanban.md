@@ -10,6 +10,7 @@ kanban-plugin: board
 - [ ] Start with link saver functionality @{2024-07-24}
 - [ ] Make the "report" channel selectable for every server, by the admin roles @{2024-07-26}
 - [ ] Make shutdown functionality only available to creators of bot @{2024-07-28}
+- [ ] Dice Roller @{2024-07-28}
 
 
 ## Done

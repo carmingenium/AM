@@ -16,6 +16,12 @@ needs to be designed before starting
 ```
 
 
+```ad-info
+title: Dice Roller
+collapse:close
+Rolls random number for dice size of given number (int)
+```
+
 
 ```ad-info
 title: Link saver for weekly film event

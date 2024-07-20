@@ -26,8 +26,29 @@
                 }
               }
             }
+          },
+          {
+            "id": "12970eb0aefcc594",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "AM Kanban.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -157,7 +178,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "3549b3200df1d819",
+  "active": "12970eb0aefcc594",
   "lastOpenFiles": [
     "AM.md",
     "AM Kanban.md",
