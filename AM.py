@@ -6,7 +6,7 @@ from discord.ext import commands
 
 # setup
 description = '''Description test'''
-TOKEN = os.environ["DISCORD_TOKEN"]
+BOT_TOKEN = os.environ["DISCORD_TOKEN"]
 intents1 = Intents.all()
 bot = commands.Bot(command_prefix='!',description=description, intents=intents1)
 # setup end
