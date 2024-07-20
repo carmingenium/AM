@@ -7,7 +7,7 @@ from discord.ext import commands
 
 BOT_TOKEN = os.environ["DISCORD_TOKEN"]
 DEV_CHANNEL = 1253303598666747965 # make this settable for every server later on
-intents1 = Intents.all()
+intents1 = discord.Intents.all()
 intents1.members = True
 bot = commands.Bot(command_prefix='!', intents=intents1)
 # setup end
