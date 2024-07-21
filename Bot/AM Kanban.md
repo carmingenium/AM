@@ -6,7 +6,7 @@ kanban-plugin: board
 
 ## Todo
 
-- [ ] Change the workflow file or create a new one so that bot keeps running even after 6 hours @{2024-07-21}
+- [ ] Change the workflow file or create a new one so that bot keeps running even after 6 hours @{2024-07-22}
 - [ ] Start with link saver functionality @{2024-07-24}
 - [ ] Make the "report" channel selectable for every server, by the admin roles @{2024-07-26}
 - [ ] Make shutdown functionality only available to creators of bot @{2024-07-28}
@@ -30,6 +30,7 @@ kanban-plugin: board
 ## Later / Not Urgent
 
 - [ ] 🛫 2024-07-20 Setup terminal code that runs on start on linux
+- [ ] Change the bots working conditions, instead of making the runner run every 6 hours, update the code on the raspberry from github and make it run the code by itself when new commits are there @{2024-08-17}
 
 
 ## Done2
