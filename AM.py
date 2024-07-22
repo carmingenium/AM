@@ -21,8 +21,8 @@ async def on_ready():
   await dev_channel.send("BOT ACTIVE")
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
-  await dev_channel.send("Synced " + str(len(synced)) + " commands")
   await expire()
+  await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
 async def expire(interaction: discord.Interaction): # this doesnt work currently.
   await interaction.response.send_message("Bot will shut down in " + 5 + " seconds")
@@ -34,7 +34,7 @@ async def expire(interaction: discord.Interaction): # this doesnt work currently
 async def help(interaction: discord.Interaction):
   # learn about different displays
   await interaction.response.send_message("Not implemented yet")
-  # retırms empty list
+  # returns empty list
   # await interaction.response.send_message("Here are all the commands: " + str(all_commands))
 
 @bot.tree.command(name="test", description="test command")
