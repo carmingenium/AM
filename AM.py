@@ -1,7 +1,8 @@
 import os
 import discord
 from discord.ext import commands
-
+import asyncio
+import time
 
 # setup
 
@@ -20,6 +21,13 @@ async def on_ready():
   await dev_channel.send("BOT ACTIVE")
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
+  await expire()
+
+async def expire(interaction: discord.Interaction):
+    await asyncio.sleep(60)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
+    await interaction.response.send_message("Shutting down: " + str(bot.user) + "Reason: Expiration")
+    await close_bot()
+    print("Bot is shutting down after 6 hours")
 
 @bot.tree.command(name="help",description="Shows all usable commands")
 async def help(interaction: discord.Interaction):
@@ -34,7 +42,7 @@ async def test(interaction: discord.Interaction):
 
 @bot.tree.command(name="shutdown", description="Shuts down the bot.")
 async def close_bot(interaction: discord.Interaction):
-  await interaction.response.send_message("Shutting down: " + str(bot.user))
+  await interaction.response.send_message("Shutting down: " + str(bot.user) + "Reason: Force Shutdown")
   await bot.close()
 
 @bot.event
