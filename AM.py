@@ -23,10 +23,11 @@ async def on_ready():
   print("synced" + str(len(synced)))
   await expire()
 
-async def expire(interaction: discord.Interaction):
-    await asyncio.sleep(5)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
-    await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Expiration")
-    await close_bot()
+async def expire(interaction: discord.Interaction): # this doesnt work currently.
+  await interaction.response.send_message("Bot will shut down in " + 5 + " seconds")
+  await asyncio.sleep(5)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
+  await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Expiration")
+  await close_bot()
 
 @bot.tree.command(name="help",description="Shows all usable commands")
 async def help(interaction: discord.Interaction):
