@@ -25,13 +25,16 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
   # expire functionality
-  await expire(5) # on ready gets stuck on here
+  await expire() # on ready gets stuck on here
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
-async def expire(seconds): # this doesnt work currently.
+async def expire(): # this doesnt work currently.
   dev_channel = bot.get_channel(DEV_CHANNEL)
-  await dev_channel.send("Bot will shut down in " + str(seconds) + " seconds")
-  await asyncio.sleep(5)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
+  await dev_channel.send("Bot will shut down in 5 hours, 59 minutes and 30 seconds")
+  # normally shutdown happens after 6 hours, in 25 seconds.
+  # We will shutdown at 5 hour 59 minutes 30 seconds to have 5 seconds of leeway.
+  # New workflow will repeat every 6 hours
+  await asyncio.sleep(5*60*60 + 59*60 + 30)  
   await dev_channel.send("Shutting down: " + str(bot.user) + " Reason: Expiration")
   await bot.close()
 
