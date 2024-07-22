@@ -25,10 +25,11 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
   # expire functionality
-  # await expire() # on ready gets stuck on here
+  await expire() # on ready gets stuck on here
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
 async def expire(): # this doesnt work currently.
+  dev_channel = bot.get_channel(DEV_CHANNEL)
   await dev_channel.send("Bot will shut down in " + 5 + " seconds")
   await asyncio.sleep(5)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
   await dev_channel.send("Shutting down: " + str(bot.user) + " Reason: Expiration")
