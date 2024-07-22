@@ -21,6 +21,7 @@ async def on_ready():
   await dev_channel.send("BOT ACTIVE")
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
+  await dev_channel.send("Synced " + str(len(synced)) + " commands")
   await expire()
 
 async def expire(interaction: discord.Interaction): # this doesnt work currently.
