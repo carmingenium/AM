@@ -14,17 +14,18 @@ bot = commands.Bot(command_prefix='!', intents=intents1)
 # setup end
 
 @bot.event
-async def on_ready():
+async def on_ready(interaction: discord.Interaction): # quick note, on_ready is called whenever resume fails
   print("bot is active")
   print(f'{bot.user} has connected to Discord!')
   dev_channel = bot.get_channel(DEV_CHANNEL)
   await dev_channel.send("BOT ACTIVE")
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
-  await expire() # on ready gets stuck on here
+  # expire functionality
+  await expire(interaction) # on ready gets stuck on here
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
-async def expire(interaction: discord.Interaction): # this doesnt work currently.
+async def expire(interaction): # this doesnt work currently.
   await interaction.response.send_message("Bot will shut down in " + 5 + " seconds")
   await asyncio.sleep(5)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
   await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Expiration")
