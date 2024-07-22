@@ -12,14 +12,15 @@ intents1 = discord.Intents.all()
 intents1.members = True
 bot = commands.Bot(command_prefix='!', intents=intents1)
 # setup end
-dev_channel = bot.get_channel(DEV_CHANNEL)
+global dev_channel
+
 
 
 @bot.event
 async def on_ready(): # quick note, on_ready is called whenever resume fails
   print("bot is active")
   print(f'{bot.user} has connected to Discord!')
-  # dev_channel = bot.get_channel(DEV_CHANNEL)
+  dev_channel = bot.get_channel(DEV_CHANNEL)
   await dev_channel.send("BOT ACTIVE")
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
