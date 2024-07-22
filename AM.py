@@ -24,7 +24,7 @@ async def on_ready():
   await expire()
 
 async def expire(interaction: discord.Interaction):
-    await asyncio.sleep(60)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
+    await asyncio.sleep(5)  # 6 hours 25 seconds normally. Will wait 6 hours 40 seconds to be sure
     await interaction.response.send_message("Shutting down: " + str(bot.user) + "Reason: Expiration")
     await close_bot()
     print("Bot is shutting down after 6 hours")
