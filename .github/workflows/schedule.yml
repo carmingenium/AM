@@ -1,0 +1,25 @@
+name: Scheduled 6 Hour Repeat
+
+on:
+  schedule:
+  - cron: '* 0,6,12,18 * * *'
+env:
+  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+jobs:
+
+  run-code:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Version Check
+        run: python --version
+      - name: Install dependencies
+        run:
+          pip install discord
+      - name: Run Bot
+        run: 
+          python AM.py
