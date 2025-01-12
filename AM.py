@@ -27,7 +27,7 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   print("synced" + str(len(synced)))
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
-@bot.tree.command(name="help",description="Shows all usable commands")
+@bot.tree.command(name="help",description="Shows all usable commands") # needs to be implemented
 async def help(interaction: discord.Interaction):
   # learn about different displays
   await interaction.response.send_message("Not implemented yet")
@@ -42,6 +42,10 @@ async def test(interaction: discord.Interaction):
 async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Force Shutdown")
   await bot.close()
+  
+  
+# calendar style popup menu for picking a date. multiple people can pick a date, and the bot will keep track of who picked what date.
+# also need to learn about databases
 
 @bot.event
 async def on_disconnect():
