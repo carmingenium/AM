@@ -3,10 +3,11 @@ import discord
 from discord.ext import commands
 import asyncio
 import time
+from dotenv import load_dotenv
 
 # setup
-
-BOT_TOKEN = os.environ["DISCORD_TOKEN"]
+load_dotenv()
+BOT_TOKEN = os.getenv('KEY')
 DEV_CHANNEL = 1267387974350405700 # make this settable for every server later on
 intents1 = discord.Intents.all()
 intents1.members = True
@@ -25,16 +26,6 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
-
-async def expire():
-  dev_channel = bot.get_channel(DEV_CHANNEL)
-  await dev_channel.send("Bot will shut down in 5 hours, 59 minutes")
-  # normally shutdown happens after 6 hours, in 25 seconds.
-  # We will shutdown at 5 hour 59 minutes 30 seconds to have 5 seconds of leeway.
-  # New workflow will repeat every 6 hours
-  await asyncio.sleep(5*60*60 + 59*60)  
-  await dev_channel.send("Shutting down: " + str(bot.user) + " Reason: Expiration")
-  await bot.close()
 
 @bot.tree.command(name="help",description="Shows all usable commands")
 async def help(interaction: discord.Interaction):
@@ -60,33 +51,3 @@ async def on_disconnect():
 def main():
   bot.run(BOT_TOKEN)
 main()
-
-
-'''
-SCHEDULE FILE SAVED HERE FOR LATER
-name: Scheduled 6 Hour Repeat
-
-on:
-  schedule:
-  - cron: '0 0,6,12,18 * * *'
-env:
-  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-jobs:
-
-  run-code:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      - name: Version Check
-        run: python --version
-      - name: Install dependencies
-        run:
-          pip install discord
-      - name: Run Bot
-        run: 
-          python AM.py
-'''
