@@ -27,7 +27,7 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   print("synced" + str(len(synced)))
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
-@bot.tree.command(name="help",description="Shows all usable commands") # class structure for features needed for this.
+@bot.tree.command(name="help",description="Shows all usable commands") 
 async def help(interaction: discord.Interaction):
   await interaction.response.send_message("Not implemented yet")
   # returns empty list
@@ -42,6 +42,10 @@ async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Force Shutdown")
   await bot.close()
   
+@bot.tree.command(name="Set Admin", description="Sets an admin user for the bot.")
+async def close_bot(interaction: discord.Interaction):
+  await interaction.response.send_message("test command for setting admin user")
+  await bot.close()
 
 @bot.event
 async def on_disconnect():
