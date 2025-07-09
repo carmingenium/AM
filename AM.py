@@ -27,12 +27,6 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   print("synced" + str(len(synced)))
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
-@bot.tree.command(name="help",description="Shows all usable commands") 
-async def help(interaction: discord.Interaction):
-  await interaction.response.send_message("Not implemented yet")
-  # returns empty list
-  # await interaction.response.send_message("Here are all the commands: " + str(all_commands))
-
 @bot.tree.command(name="test", description="test command")
 async def test(interaction: discord.Interaction):
   await interaction.response.send_message("test command")
