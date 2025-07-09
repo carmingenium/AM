@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # setup
 load_dotenv()
 BOT_TOKEN = os.getenv('KEY')
-DEV_CHANNEL = 1267387974350405700 # make this settable for every server later on
+DEV_CHANNEL = 1267387974350405700 # hardcoded for now
 intents1 = discord.Intents.all()
 intents1.members = True
 bot = commands.Bot(command_prefix='!', intents=intents1)
@@ -27,9 +27,8 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   print("synced" + str(len(synced)))
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
 
-@bot.tree.command(name="help",description="Shows all usable commands") # needs to be implemented
+@bot.tree.command(name="help",description="Shows all usable commands") # class structure for features needed for this.
 async def help(interaction: discord.Interaction):
-  # learn about different displays
   await interaction.response.send_message("Not implemented yet")
   # returns empty list
   # await interaction.response.send_message("Here are all the commands: " + str(all_commands))
@@ -43,9 +42,6 @@ async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Force Shutdown")
   await bot.close()
   
-  
-# calendar style popup menu for picking a date. multiple people can pick a date, and the bot will keep track of who picked what date.
-# also need to learn about databases
 
 @bot.event
 async def on_disconnect():
