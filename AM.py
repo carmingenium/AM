@@ -5,9 +5,15 @@ import asyncio
 import time
 from dotenv import load_dotenv
 
-# setup
+# .env setup
 load_dotenv()
 BOT_TOKEN = os.getenv('KEY')
+DB_URI = os.getenv("MONGO_URI")
+
+
+
+
+# bot setup
 DEV_CHANNEL = 1267387974350405700 # hardcoded for now
 intents1 = discord.Intents.all()
 intents1.members = True
@@ -26,7 +32,7 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
   synced = await bot.tree.sync()
   print("synced" + str(len(synced)))
   await dev_channel.send("Synced " + str(len(synced)) + " commands")
-
+               
 @bot.tree.command(name="test", description="test command")
 async def test(interaction: discord.Interaction):
   await interaction.response.send_message("test command")
