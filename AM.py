@@ -42,7 +42,7 @@ async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Force Shutdown")
   await bot.close()
   
-@bot.tree.command(name="set admin", description="Sets an admin user for the bot.")
+@bot.tree.command(name="setadmin", description="Sets an admin user for the bot.")
 async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("test command for setting admin user")
   await bot.close()
