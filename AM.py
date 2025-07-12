@@ -4,21 +4,29 @@ from discord.ext import commands
 import asyncio
 import time
 from dotenv import load_dotenv
+from pymongo import MongoClient
 
 # .env setup
 load_dotenv()
 BOT_TOKEN = os.getenv('KEY')
 DB_URI = os.getenv("MONGO_URI")
+DEV_CHANNEL = os.getenv("DEV_CHANNEL")
 
 
 
 
 # bot setup
-DEV_CHANNEL = 1267387974350405700 # hardcoded for now
 intents1 = discord.Intents.all()
 intents1.members = True
 bot = commands.Bot(command_prefix='!', intents=intents1)
-# setup end
+# db setup
+mongo_client = MongoClient(DB_URI)
+db = mongo_client["am_bot"]
+
+
+
+
+
 global dev_channel
 
 
@@ -37,11 +45,6 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
 async def test(interaction: discord.Interaction):
   await interaction.response.send_message("test command")
 
-@bot.tree.command(name="shutdown", description="Shuts down the bot.")
-async def close_bot(interaction: discord.Interaction):
-  await interaction.response.send_message("Shutting down: " + str(bot.user) + " Reason: Force Shutdown")
-  await bot.close()
-  
 @bot.tree.command(name="setadmin", description="Sets an admin user for the bot.")
 async def close_bot(interaction: discord.Interaction):
   await interaction.response.send_message("test command for setting admin user")
