@@ -75,8 +75,10 @@ async def set_botadmin(interaction: discord.Interaction, user: discord.User, not
 
 @bot.tree.command(name="terminate", description="Terminates bot.")
 async def terminate(interaction: discord.Interaction):
-  if str(interaction.user.id) not in db.admins.find_one({"user_id": str(interaction.user.id)})["user_id"]:
+  admin_doc = db.admins.find_one({"user_id": str(interaction.user.id), "active": True})
+  if admin_doc is None:
     await interaction.response.send_message("You are not an admin user.")
+    return
   else:
     await interaction.response.send_message("Terminating.")
     await bot.close()
