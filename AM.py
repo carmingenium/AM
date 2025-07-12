@@ -5,6 +5,8 @@ import asyncio
 import time
 from dotenv import load_dotenv
 from pymongo import MongoClient
+from datetime import datetime, timezone, timedelta
+
 
 # .env setup
 load_dotenv()
@@ -41,10 +43,38 @@ async def on_ready(): # quick note, on_ready is called whenever resume fails
 async def test(interaction: discord.Interaction):
   await interaction.response.send_message("test command")
 
+
 @bot.tree.command(name="setadmin", description="Sets an admin user for the bot.")
-async def close_bot(interaction: discord.Interaction):
-  await interaction.response.send_message("test command for setting admin user")
-  await bot.close()
+async def set_botadmin(interaction: discord.Interaction, user: discord.User, note: str = "dev"):
+  # admin spesific
+  # admin_doc = db.admins.find_one({"user_id": str(interaction.user.id), "active": True})
+  # if admin_doc is None:
+  #   await interaction.response.send_message("You are not an admin user.")
+  #   return
+
+  existing = db.admins.find_one({"user_id": str(user.id)})
+  if existing:
+    await interaction.response.send_message("This user is already an admin.")
+    return
+
+  db.admins.insert_one({
+    "user_id": str(user.id),
+    "added_by": str(interaction.user.id),
+    "added_at": (datetime.now(timezone.utc) + timedelta(hours=3)).isoformat(), # UTC+3 timezone
+    "note": note,
+    "active": True
+  })
+
+  await interaction.response.send_message(f"{user.mention} is now set as an admin.")
+
+@bot.tree.command(name="setadmin", description="Sets an admin user for the bot.")
+async def terminate(interaction: discord.Interaction):
+  if interaction.user.id not in db.admins.find_one({"user_id": str(interaction.user.id)})["user_id"]:
+    await interaction.response.send_message("You are not an admin user.")
+  else:
+    await interaction.response.send_message("Terminating.")
+    await bot.close()
+
 
 @bot.event
 async def on_disconnect():
