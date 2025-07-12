@@ -51,8 +51,12 @@ async def set_botadmin(interaction: discord.Interaction, user: discord.User, not
   # if admin_doc is None:
   #   await interaction.response.send_message("You are not an admin user.")
   #   return
-
-  existing = db.admins.find_one({"user_id": str(user.id)})
+  existing = False
+  try:
+    existing = db.admins.find_one({"user_id": str(user.id)})
+  except Exception as e:
+    await interaction.response.send_message("An error occurred while checking the database.")
+    return
   if existing:
     await interaction.response.send_message("This user is already an admin.")
     return
@@ -64,7 +68,6 @@ async def set_botadmin(interaction: discord.Interaction, user: discord.User, not
     "note": note,
     "active": True
   })
-
   await interaction.response.send_message(f"{user.mention} is now set as an admin.")
 
 @bot.tree.command(name="terminate", description="Terminates bot.")
