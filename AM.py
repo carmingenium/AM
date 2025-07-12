@@ -10,7 +10,7 @@ from pymongo import MongoClient
 load_dotenv()
 BOT_TOKEN = os.getenv('KEY')
 DB_URI = os.getenv("MONGO_URI")
-DEV_CHANNEL = os.getenv("DEV_CHANNEL")
+DEV_CHANNEL = int(os.getenv("DEV_CHANNEL"))
 
 
 
@@ -22,10 +22,6 @@ bot = commands.Bot(command_prefix='!', intents=intents1)
 # db setup
 mongo_client = MongoClient(DB_URI)
 db = mongo_client["am_bot"]
-
-
-
-
 
 global dev_channel
 
