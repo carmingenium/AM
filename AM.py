@@ -47,11 +47,12 @@ async def test(interaction: discord.Interaction):
 @bot.tree.command(name="setadmin", description="Sets an admin user for the bot.")
 async def set_botadmin(interaction: discord.Interaction, user: discord.User, note: str = "dev"):
   # admin spesific
-  # admin_doc = db.admins.find_one({"user_id": str(interaction.user.id), "active": True})
-  # if admin_doc is None:
-  #   await interaction.response.send_message("You are not an admin user.")
-  #   return
+  admin_doc = db.admins.find_one({"user_id": str(interaction.user.id), "active": True})
+  if admin_doc is None:
+    await interaction.response.send_message("You are not an admin user.")
+    return
   existing = False
+  print_admins()
   try:
     existing = db.admins.find_one({"user_id": str(user.id)})
   except Exception as e:
@@ -63,6 +64,7 @@ async def set_botadmin(interaction: discord.Interaction, user: discord.User, not
 
   db.admins.insert_one({
     "user_id": str(user.id),
+    "username": str(user.name),
     "added_by": str(interaction.user.id),
     "added_at": (datetime.now(timezone.utc) + timedelta(hours=3)).isoformat(), # UTC+3 timezone
     "note": note,
@@ -70,9 +72,10 @@ async def set_botadmin(interaction: discord.Interaction, user: discord.User, not
   })
   await interaction.response.send_message(f"{user.mention} is now set as an admin.")
 
+
 @bot.tree.command(name="terminate", description="Terminates bot.")
 async def terminate(interaction: discord.Interaction):
-  if interaction.user.id not in db.admins.find_one({"user_id": str(interaction.user.id)})["user_id"]:
+  if str(interaction.user.id) not in db.admins.find_one({"user_id": str(interaction.user.id)})["user_id"]:
     await interaction.response.send_message("You are not an admin user.")
   else:
     await interaction.response.send_message("Terminating.")
@@ -83,6 +86,13 @@ async def terminate(interaction: discord.Interaction):
 async def on_disconnect():
   print("Bot is disconnected")
 
+def print_admins():
+  admins = db.admins.find({"active": True})
+  admin_list = []
+  for admin in admins:
+    admin_list.append(f"{admin['user_id']} - {admin['username']} - {admin['note']}  ")
+  print("Active Admins:")
+  print("\n".join(admin_list) if admin_list else "No active admins found.")
 
 def main():
   bot.run(BOT_TOKEN)
