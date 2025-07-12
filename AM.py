@@ -67,7 +67,7 @@ async def set_botadmin(interaction: discord.Interaction, user: discord.User, not
 
   await interaction.response.send_message(f"{user.mention} is now set as an admin.")
 
-@bot.tree.command(name="setadmin", description="Sets an admin user for the bot.")
+@bot.tree.command(name="terminate", description="Terminates bot.")
 async def terminate(interaction: discord.Interaction):
   if interaction.user.id not in db.admins.find_one({"user_id": str(interaction.user.id)})["user_id"]:
     await interaction.response.send_message("You are not an admin user.")
