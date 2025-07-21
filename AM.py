@@ -92,12 +92,18 @@ async def event_poll(interaction: discord.Interaction):
   time_list = []
   while True:
     try:
+      await interaction.followup.send("Add an event.")
       msg = await bot.wait_for('message', timeout=60.0, check=lambda m: m.author == interaction.user and m.channel == interaction.channel)
+      if (msg.content.lower() == 'stop'):
+        if not event_list:
+          await interaction.followup.send("No events were provided. Cancelling event creation.")
+          return
+        break
       await interaction.followup.send(f"{msg.content} added to the event list, are you sure? Type 'no' to cancel, 'yes' to confirm.")
       response = await bot.wait_for('message', timeout=15.0, check=lambda m: m.author == interaction.user and m.channel == interaction.channel)
       if(response.content.lower() == 'no'):
         await interaction.followup.send(f"{msg.content} was not added to the event list. Please type another event or 'stop' to finish.")
-        return
+        continue
       elif(response.content.lower() == 'yes'):
         await interaction.followup.send(f"{msg.content} was added to the event list.")
       else:
@@ -106,12 +112,6 @@ async def event_poll(interaction: discord.Interaction):
     except asyncio.TimeoutError:
       await interaction.followup.send("Event creation timed out. Please start again.")
       return
-
-    if msg.content.lower() == 'stop':
-      if not event_list:
-        await interaction.followup.send("No events were provided. Cancelling event creation.")
-        return
-      break
     event_list.append(msg.content) # event added
     
     
@@ -182,17 +182,12 @@ async def event_poll(interaction: discord.Interaction):
   # create poll for the combinations
   await interaction.followup.send("Creating poll for the events and times.")
 
-  discord.Poll(
-    title="Event Poll",
-    description="Choose your preferred event and time.",
-    options=[f"{event} - {time}" for event in event_list for time in time_list[event_list.index(event)]],
-    channel=interaction.channel,
-    user=interaction.user
-  )
-
-
-
-
+  #24 hours from now
+  poll = discord.Poll("Event Poll", timedelta(hours=24))
+  for event in event_list:
+    for time in time_list[event_list.index(event)]:
+      poll.add_answer(text=f"Event: {event} - Time: {time}")
+  # poll.layout_type
 
 @bot.event
 async def on_disconnect():
